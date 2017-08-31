@@ -50,14 +50,6 @@ var TsLibPackage = yeoman.Base.extend({
     install: function() {
         var self = this;
 
-        this.log(chalk.green(
-            '\n Begin init npm project.'
-        ));
-        this.spawnCommand('npm', ['init']);
-        this.log(chalk.green(
-            '\n Finish init npm project.'
-        ));
-
         this.log(chalk.yellow(
             '\nBegin installing dependencies'
         ));
@@ -75,7 +67,6 @@ var TsLibPackage = yeoman.Base.extend({
     },
 
     end: function() {
-
         this.log(chalk.yellow(
             '\nYour generator has been created successfully!\n'
         ));
