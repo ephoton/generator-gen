@@ -7,6 +7,7 @@ var path = require('path'),
     yeoman = require('yeoman-generator'),
     // yosay = require('yosay'),
     fs = require('fs'),
+    path = require('path'),
     templatesPath = path.join(__dirname, 'templates');
 
 function copyFilesOfDir(dirPath) {
@@ -26,8 +27,6 @@ function copyFilesOfDir(dirPath) {
                 self.copy(newPath, file);
             }
         });
-
-
     });
 }
 
@@ -51,14 +50,6 @@ var TsLibPackage = yeoman.Base.extend({
         var self = this;
 
         this.log(chalk.green(
-            '\n Begin init npm project.'
-        ));
-        this.spawnCommand('npm', ['init']);
-        this.log(chalk.green(
-            '\n Finish init npm project.'
-        ));
-
-        this.log(chalk.yellow(
             '\nBegin installing dependencies'
         ));
         this.installDependencies({
@@ -75,7 +66,6 @@ var TsLibPackage = yeoman.Base.extend({
     },
 
     end: function() {
-
         this.log(chalk.yellow(
             '\nYour generator has been created successfully!\n'
         ));
