@@ -3,7 +3,7 @@ A generator that generates yeomen generator.
 
 ## Installation
 ```bash
-npm install yo generator-gen -g
+npm install yo generator-gr -g
 mkdir generator-example && cd generator-example && yo gen
 ```
 

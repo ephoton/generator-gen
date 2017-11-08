@@ -1,6 +1,6 @@
 {
   "name": "generator-gr",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A generator that generates yeomen generator.",
   "main": "generator/app/index.js",
   "files": [
