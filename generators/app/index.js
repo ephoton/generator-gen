@@ -50,6 +50,7 @@ var TsLibPackage = yeoman.Base.extend({
     install: function() {
         var self = this;
 
+        this.spawnCommand('npm', ['init']);
         this.log(chalk.yellow(
             '\nBegin installing dependencies'
         ));
