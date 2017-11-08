@@ -1,8 +1,8 @@
 {
   "name": "generator-gen",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A generator that generates yeomen generator.",
+  "main": "generator/app/index.js",
   "files": [
     "generators"
   ],
