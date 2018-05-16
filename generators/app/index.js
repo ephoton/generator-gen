@@ -4,63 +4,56 @@
 
 var path = require('path'),
     chalk = require('chalk'),
-    yeoman = require('yeoman-generator'),
+    Generator = require('yeoman-generator'),
     // yosay = require('yosay'),
     fs = require('fs'),
+    path = require('path'),
+    { exec } = require('child_process');
     templatesPath = path.join(__dirname, 'templates');
 
-function copyFilesOfDir(dirPath) {
-    var self = this;
-
-    fs.readdir(dirPath, function(err, files) {
-        if (err) {
-            return;
-        }
-
-        files.map(function (file) {
-            var newPath = path.join(dirPath, file);
-
-            if (fs.lstatSync(newPath).isDirectory()) {
-                self.directory(newPath, file);
-            } else {
-                self.copy(newPath, file);
-            }
-        });
-
-
-    });
-}
-
-var TsLibPackage = yeoman.Base.extend({
-    info: function() {
+module.exports = class extends Generator {
+    info() {
         this.log(chalk.green(
             'Generating generator now: '
         ));
-    },
+    }
 
-    generateBasic: function() {
-        copyFilesOfDir.call(this, templatesPath);
-    },
+    generateBasic() {
+        let to = path.resolve('./');
+        this.fs.copy(templatesPath, to);
+    }
 
-    generateClient: function() {
+    generateClient() {
         this.sourceRoot(templatesPath);
         this.destinationPath('./');
-    },
+    }
 
-    install: function() {
+    install() {
         var self = this;
-
-        this.log(chalk.yellow(
-            '\nBegin initializing project.'
+                
+        this.log(chalk.green(
+            '\nBegin installing dependencies'
         ));
-        this.spawnCommand('npm', ['init']);
-    },
+        this.installDependencies({
+            npm: false,
+            bower: false,
+            yarn: true,
+            skipMessage: true,
+            callback: function () {
+                self.log(chalk.green(
+                    'Finish installing dependencies!'
+                ));
 
-    end: function() {
+                self.end();
+            }
+        });
+    }
+
+    end() {
+        exec('echo "node_modules" > .gitignore');
+        
         this.log(chalk.yellow(
             '\nYour generator has been created successfully!\n'
         ));
     }
-});
-
-module.exports = TsLibPackage;
+};
