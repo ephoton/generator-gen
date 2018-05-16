@@ -1,8 +1,8 @@
 {
   "name": "generator-gr",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A generator that generates yeomen generator.",
-  "main": "generator/app/index.js",
+  "main": "index.js",
   "files": [
     "generators"
   ],
@@ -17,8 +17,7 @@
   "author": "ephoton",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^1.1.3",
-    "yeoman-generator": "^0.24.1",
-    "yosay": "^1.2.1"
+    "chalk": "^2.3.2",
+    "yeoman-generator": "^2.0.3"
   }
 }
